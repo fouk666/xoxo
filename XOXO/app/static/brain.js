@@ -1,7 +1,9 @@
-var t = new Array(9);
-var myUser = {};
+var t = new Array(9); // состояния игрового поля
+var myUser = {}; // игрок
 var socket = io.connect('http://' + document.domain + ':' + location.port);
 
+// присваивание пользователю id сокета
+// добавляем пользователя на сервер
 $(document).ready(function () {
     myUser.id = socket.id;
     console.log(myUser.id,': ID');
@@ -13,11 +15,13 @@ window.onbeforeunload = function warn(){
     socket.emit('removeUser', myUser.id);
 };
 
+// ход компьютера
 function ai() {
   var id = Math.floor(Math.random() * 9);
   t[id] ? ai() : move(id, 'ai');
 }
 
+// проверка окончания игры
 function checkEnd() {
   if (t[0] == 'ai' && t[1] == 'ai' && t[2] == 'ai' || t[0] == 'player' && t[1] == 'player' && t[2] == 'player')  return true;
   if (t[3] == 'ai' && t[4] == 'ai' && t[5] == 'ai' || t[3] == 'player' && t[4] == 'player' && t[5] == 'player')  return true;
@@ -30,6 +34,7 @@ function checkEnd() {
   if (t[0] && t[1] && t[2] && t[3] && t[4] && t[5] && t[6] && t[7] && t[8]) return true;
 }
 
+// ход игрока
 function move(id, role) {
     if (t[id]) return false;
     t[id] = role;
@@ -42,6 +47,7 @@ function move(id, role) {
     !checkEnd() ? (role == 'player') ? ai() : null : reset();
 }
 
+// окончание игры
 function reset() {
   alert("Игра окончена!");
   socket.emit('removeUser', myUser.id);
