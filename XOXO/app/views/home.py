@@ -155,6 +155,8 @@ def addUser(user):
 #проверяем завершения игры
 @socketio.on('move')
 def move(userID,cellID):
+    if (len(users) < 2):
+        return
     cellX = cellID//10
     cellY = cellID%10
     if ((userID == currentUserID)and(stateGame[cellX][cellY] == 0)):
