@@ -1,26 +1,122 @@
 body {
-  background-color: black;
+  background-color: #000;
 }
 .actions {
   text-align: center;
 }
-.ai {
-  background-image: url('img/ai.png');
+li {
+  list-style-type: none; /* Прячем исходные маркеры */
 }
-.container {
-  margin: 250px auto;
-  width: 300px;
+
+li:before {
+  color: #0F0; /* Цвет маркера */
+  content: "#"; /* Сам маркер */
+  padding-right: 10px; /* Расстояние от маркера до текста */
 }
-.cell {
-  background-color: black;
-  border: 2px solid #00FF00;
+.player1 {
+  background-image: url('img/player1.png');
+  width: 48px;
+  height: 48px;
+  border: 2px solid #0F0;
   float: left;
-  height: 96px;
-  width: 96px;
 }
+
+.player2 {
+  background-image: url('img/player2.png');
+  width: 48px;
+  height: 48px;
+  border: 2px solid #0F0;
+  float: left;
+}
+
+.container {
+  margin: 0 auto;
+  width: 100%;
+}
+
+.cell {
+  background-color: #000;
+  border: 2px solid #0F0;
+  float: left;
+  height: 48px;
+  width: 48px;
+}
+
 .cell:hover {
-  border-color: red;
+  border-color: #F00;
 }
-.player {
-  background-image: url('img/player.png');
+
+.table {
+  display: inline-block;
+  text-align: left;
+  width: 520px;
+  margin: 0 auto;
 }
+
+.name-game {
+  color: #00FF00;
+  font-size: 100px;
+  text-align: center;
+  margin: 20px 0 70px;
+}
+
+.chat-game {
+  width: 25%;
+}
+
+.rules-game, .chat-game {
+  display: inline-block;
+  vertical-align: top;
+
+}
+
+.rules-game {
+  color: #0F0;
+  width: 25%;
+  margin-left: 2%;
+}
+
+.sendbutton {
+  background-color: #000;
+  border: 1px solid #0F0;
+  display: inline-block;
+  cursor: pointer;
+  color: #0F0;
+  font-family: Arial;
+  font-size: 14px;
+  padding: 2px 30px;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+.sendbutton:active {
+  position:relative;
+  top:1px;
+}
+
+.container-table {
+  width: 46%;
+  display: inline-block;
+  text-align: center;
+}
+
+.rules-title, .chat-title {
+  color: #0F0;
+  font-size: 30px;
+  margin-bottom: 8px;
+}
+
+.rules-discription__text {
+  font-size: 20px;
+  margin: 5px 0;
+  color: #F00;
+}
+
+.rules-discription {
+  font-size: 14px;
+  text-align: justify;
+}
+
+.messages {
+  color: #F00;
+}
+

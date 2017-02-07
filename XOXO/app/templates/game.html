@@ -3,23 +3,164 @@
 <head>
   <title>XO</title>
   <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="static/reset.css">
   <link rel="stylesheet" type="text/css" href="static/style.css">
+
   <script src="static/socket.io/socket.io.js" defer></script>
-  <script src="static/jq/jquery-3.1.1.js" defer></script>
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js" defer></script>
   <script src="static/brain.js" defer></script>
 </head>
 <body>
-  <div class="container">
+<div class="container">
+  <div class="name-game">XOXO</div>
+  <div class="rules-game">
+    <div class="rules-title">
+      Правила игры
+    </div>
+    <div class="rules-discription">
+      <p class="rules-discription__text">1. Основные термины и определения</p>
+      РЯД - Набор значков одного типа, расположенных на одной горизонтальной или вертикальной.</div>
+    <div class="rules-discription">
+      Непрерывный ряд - набор значков одного типа, расположенных на одной горизонтальной или вертикальной линии в которой между любыми двумя значками нет пустых пересечений.
+    </div>
+    <div class="rules-discription">
+      <p class="rules-discription__text">2. Процесс игры </p>
+      Два игрока (Крестики и Нолики), поочередно, размещают значки своего типа, по одному за ход, на пересечениях пустой игрового поля, которая состоит из 15 горизонтальных и 15
+      вертикальных линий. Первый ход всегда делают Черные в центр доски.
+    </div>
+    <div class="rules-discription">
+      <p class="rules-discription__text">3. Ход</p>
+      Ходом считается постановка значка на одно из пустых пересечений игрового поля.
+    </div>
+    <div class="rules-discription">
+      <p class="rules-discription__text">4. Выигрыш</p>
+      Игра считается закончившейся выигрышем одного из игроков, если игрок, первым построил НЕПРЕРЫВНЫЙ РЯД, содержащий ровно 5 значков.
+    </div>
+    <div class="rules-discription">
+      <p class="rules-discription__text">5. Ничья</p>
+      Игра считается закончившейся вничью, если на доске не осталось ни одного пустого пересечения куда можно было бы поставить значок, и ни один игрок при этом не добился ВЫИГРЫША.
+    </div>
+  </div>
+  <div class="container-table">
     <div class="table">
-      <div class="cell" id="0" onclick="move(0, 'player')"></div>
-      <div class="cell" id="1" onclick="move(1, 'player')"></div>
-      <div class="cell" id="2" onclick="move(2, 'player')"></div>
-      <div class="cell" id="3" onclick="move(3, 'player')"></div>
-      <div class="cell" id="4" onclick="move(4, 'player')"></div>
-      <div class="cell" id="5" onclick="move(5, 'player')"></div>
-      <div class="cell" id="6" onclick="move(6, 'player')"></div>
-      <div class="cell" id="7" onclick="move(7, 'player')"></div>
-      <div class="cell" id="8" onclick="move(8, 'player')"></div>
+      <div class="cell" id="0" onclick="move(0)"></div>
+      <div class="cell" id="1" onclick="move(1)"></div>
+      <div class="cell" id="2" onclick="move(2)"></div>
+      <div class="cell" id="3" onclick="move(3)"></div>
+      <div class="cell" id="4" onclick="move(4)"></div>
+      <div class="cell" id="5" onclick="move(5)"></div>
+      <div class="cell" id="6" onclick="move(6)"></div>
+      <div class="cell" id="7" onclick="move(7)"></div>
+      <div class="cell" id="8" onclick="move(8)"></div>
+      <div class="cell" id="9" onclick="move(9)"></div>
+
+      <div class="cell" id="10" onclick="move(10)"></div>
+      <div class="cell" id="11" onclick="move(11)"></div>
+      <div class="cell" id="12" onclick="move(12)"></div>
+      <div class="cell" id="13" onclick="move(13)"></div>
+      <div class="cell" id="14" onclick="move(14)"></div>
+      <div class="cell" id="15" onclick="move(15)"></div>
+      <div class="cell" id="16" onclick="move(16)"></div>
+      <div class="cell" id="17" onclick="move(17)"></div>
+      <div class="cell" id="18" onclick="move(18)"></div>
+      <div class="cell" id="19" onclick="move(19)"></div>
+
+      <div class="cell" id="20" onclick="move(20)"></div>
+      <div class="cell" id="21" onclick="move(21)"></div>
+      <div class="cell" id="22" onclick="move(22)"></div>
+      <div class="cell" id="23" onclick="move(23)"></div>
+      <div class="cell" id="24" onclick="move(24)"></div>
+      <div class="cell" id="25" onclick="move(25)"></div>
+      <div class="cell" id="26" onclick="move(26)"></div>
+      <div class="cell" id="27" onclick="move(27)"></div>
+      <div class="cell" id="28" onclick="move(28)"></div>
+      <div class="cell" id="29" onclick="move(29)"></div>
+
+      <div class="cell" id="30" onclick="move(30)"></div>
+      <div class="cell" id="31" onclick="move(31)"></div>
+      <div class="cell" id="32" onclick="move(32)"></div>
+      <div class="cell" id="33" onclick="move(33)"></div>
+      <div class="cell" id="34" onclick="move(34)"></div>
+      <div class="cell" id="35" onclick="move(35)"></div>
+      <div class="cell" id="36" onclick="move(36)"></div>
+      <div class="cell" id="37" onclick="move(37)"></div>
+      <div class="cell" id="38" onclick="move(38)"></div>
+      <div class="cell" id="39" onclick="move(39)"></div>
+
+      <div class="cell" id="40" onclick="move(40)"></div>
+      <div class="cell" id="41" onclick="move(41)"></div>
+      <div class="cell" id="42" onclick="move(42)"></div>
+      <div class="cell" id="43" onclick="move(43)"></div>
+      <div class="cell" id="44" onclick="move(44)"></div>
+      <div class="cell" id="45" onclick="move(45)"></div>
+      <div class="cell" id="46" onclick="move(46)"></div>
+      <div class="cell" id="47" onclick="move(47)"></div>
+      <div class="cell" id="48" onclick="move(48)"></div>
+      <div class="cell" id="49" onclick="move(49)"></div>
+
+      <div class="cell" id="50" onclick="move(50)"></div>
+      <div class="cell" id="51" onclick="move(51)"></div>
+      <div class="cell" id="52" onclick="move(52)"></div>
+      <div class="cell" id="53" onclick="move(53)"></div>
+      <div class="cell" id="54" onclick="move(54)"></div>
+      <div class="cell" id="55" onclick="move(55)"></div>
+      <div class="cell" id="56" onclick="move(56)"></div>
+      <div class="cell" id="57" onclick="move(57)"></div>
+      <div class="cell" id="58" onclick="move(58)"></div>
+      <div class="cell" id="59" onclick="move(59)"></div>
+
+      <div class="cell" id="60" onclick="move(60)"></div>
+      <div class="cell" id="61" onclick="move(61)"></div>
+      <div class="cell" id="62" onclick="move(62)"></div>
+      <div class="cell" id="63" onclick="move(63)"></div>
+      <div class="cell" id="64" onclick="move(64)"></div>
+      <div class="cell" id="65" onclick="move(65)"></div>
+      <div class="cell" id="66" onclick="move(66)"></div>
+      <div class="cell" id="67" onclick="move(67)"></div>
+      <div class="cell" id="68" onclick="move(68)"></div>
+      <div class="cell" id="69" onclick="move(69)"></div>
+
+      <div class="cell" id="70" onclick="move(70)"></div>
+      <div class="cell" id="71" onclick="move(71)"></div>
+      <div class="cell" id="72" onclick="move(72)"></div>
+      <div class="cell" id="73" onclick="move(73)"></div>
+      <div class="cell" id="74" onclick="move(74)"></div>
+      <div class="cell" id="75" onclick="move(75)"></div>
+      <div class="cell" id="76" onclick="move(76)"></div>
+      <div class="cell" id="77" onclick="move(77)"></div>
+      <div class="cell" id="78" onclick="move(78)"></div>
+      <div class="cell" id="79" onclick="move(79)"></div>
+
+      <div class="cell" id="80" onclick="move(80)"></div>
+      <div class="cell" id="81" onclick="move(81)"></div>
+      <div class="cell" id="82" onclick="move(82)"></div>
+      <div class="cell" id="83" onclick="move(83)"></div>
+      <div class="cell" id="84" onclick="move(84)"></div>
+      <div class="cell" id="85" onclick="move(85)"></div>
+      <div class="cell" id="86" onclick="move(86)"></div>
+      <div class="cell" id="87" onclick="move(87)"></div>
+      <div class="cell" id="88" onclick="move(88)"></div>
+      <div class="cell" id="89" onclick="move(89)"></div>
+
+      <div class="cell" id="90" onclick="move(90)"></div>
+      <div class="cell" id="91" onclick="move(91)"></div>
+      <div class="cell" id="92" onclick="move(92)"></div>
+      <div class="cell" id="93" onclick="move(93)"></div>
+      <div class="cell" id="94" onclick="move(94)"></div>
+      <div class="cell" id="95" onclick="move(95)"></div>
+      <div class="cell" id="96" onclick="move(96)"></div>
+      <div class="cell" id="97" onclick="move(97)"></div>
+      <div class="cell" id="98" onclick="move(98)"></div>
+      <div class="cell" id="99" onclick="move(99)"></div>
+    </div>
+  </div>
+    <div class="chat-game">
+      <div class="chat-title">
+        Игровой чат
+      </div>
+      <input type="text" id="myMessage" size="30">
+      <button class="sendbutton" id="sendbutton">Отправить</button>
+      <ul class="messages" id="messages"></ul>
     </div>
   </div>
 </body>
