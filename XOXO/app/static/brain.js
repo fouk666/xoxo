@@ -1,10 +1,11 @@
-//var t = new Array(100); // состояния игрового поля
 var myUser = {}; // игрок
 var socket = io.connect('http://' + document.domain + ':' + location.port);
 
 do {
-    var nickname = prompt('Введите свой ник: ');
+    var nickname = prompt('Введите свой ник: ', makeid());
     console.log('nick: '+nickname);
+    if (nickname == null)
+        nickname = makeid();
     myUser.nickname = nickname;
     console.log('userNick: '+myUser.nickname.toString());
 } while (nickname == '');
@@ -13,6 +14,7 @@ alert('Ваш ник: ' + nickname);
 // присваивание пользователю id сокета
 // добавляем пользователя на сервер
 $(document).ready(function () {
+    // если не будет сокета, добавить генерацию ID
     myUser.id = socket.id;
     console.log('myUser.id: ', myUser.id);
     socket.emit('addUser', myUser);
@@ -23,6 +25,16 @@ window.onbeforeunload = function warn(){
     socket.send('|~  '+myUser.nickname.toString() + ' has disconnected!  ~|');
     socket.emit('removeUser', myUser.id);
 };
+
+function makeid() {
+    var text = '';
+    var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+
+    for( var i=0; i < 5; i++ )
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+    return text;
+}
 
 // ход игрока
 function move(id) {
