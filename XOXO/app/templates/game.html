@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>XO</title>
+  <title>XOXO</title>
   <meta charset="utf-8">
   <link rel="stylesheet" type="text/css" href="static/reset.css">
   <link rel="stylesheet" type="text/css" href="static/style.css">
@@ -12,7 +12,12 @@
 </head>
 <body>
 <div class="container">
-  <div class="name-game">XOXO</div>
+  <div class="name-game">
+    <span class="color-blue">X</span>
+    <span class="color-red">O</span>
+    <span class="color-blue">X</span>
+    <span class="color-red">O</span>
+  </div>
   <div class="rules-game">
     <div class="rules-title">
       Правила игры
@@ -158,9 +163,11 @@
       <div class="chat-title">
         Игровой чат
       </div>
-      <input type="text" id="myMessage" size="30">
-      <button class="sendbutton" id="sendbutton">Отправить</button>
-      <ul class="messages" id="messages"></ul>
+      <form onsubmit=";return false">
+        <input class="input" type="text" id="myMessage" size="30">
+        <input type="submit" class="sendbutton" id="sendbutton">
+        <ul class="messages" id="messages"></ul>
+      </form>
     </div>
   </div>
 </body>

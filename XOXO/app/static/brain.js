@@ -59,11 +59,11 @@ function reset(winner) {
 var checkMe = false;
 
 socket.on('connect', function() {
-    socket.send('|~  '+myUser.nickname.toString()+' has connected  ~|');
+    socket.send('|~  ' + '<span class="nickname-bold">' +  myUser.nickname + '</span>' + ' has connected  ~|');
 });
 
 function disconnect() {
-    socket.send('|~  '+myUser.nickname.toString() + ' has disconnected!  ~|');
+    socket.send('|~  ' + '<span class="nickname-bold">' + myUser.nickname + '</span>' + ' has disconnected!  ~|');
     socket.disconnect();
     console.log('3 disc');
 }
@@ -104,12 +104,12 @@ socket.on('message', function(msg) {
                             } else {
                                 console.log('msgID', msg)
                                 if ((checkMe)&&(myUser.enemy != undefined)) {
-                                    $("#messages").append('<li>' + myUser.nickname + ': ' + msg + '</li>');
+                                    $("#messages").append('<li>' + '<span class="nickname-bold">' + myUser.nickname + '</span>' + ': ' + msg + '</li>');
                                     checkMe = false;
                                 }
                                 else
                                     if ((!checkMe)&&(myUser.enemy != undefined))
-                                        $("#messages").append('<li>' + myUser.enemy + ': ' + msg + '</li>');
+                                        $("#messages").append('<li>' + '<span class="nickname-bold">' + myUser.enemy + '</span>' + ': ' + msg + '</li>');
                                     else
                                         $("#messages").append('<li>' + msg + '</li>');
                                 console.log('Received message');
@@ -117,7 +117,7 @@ socket.on('message', function(msg) {
     } else disconnect();
 });
 
-$('#sendbutton').on('click', function() {
+$('#sendbutton').on('click', function sendButton() {
     var msg = $('#myMessage').val().trim();
     console.log('msg = ' + msg);
     if (msg !== '')

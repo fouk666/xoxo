@@ -1,5 +1,12 @@
 body {
-  background-color: #000;
+  /*height: 922px;*/
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#83362c+0,89392e+0,87392c+0,843a31+3,833b2f+4,6e433d+13,6b423e+14,594b4a+21,564b49+21,524e4f+23,4e4e4e+24,4f4f51+24,475153+26,475256+27,435255+28,445358+28,415357+28,40555a+29,3a565a+31,3a575d+31,38575c+32,37585f+32,345961+33,2e5b61+35,2f5b64+35,2b5c63+36,2b5d66+37,285d65+37,265f6a+38,1e606c+41,1d636f+41,156471+45,136573+45,0e6775+47,0d6978+48,0b6877+49,0b6273+49,086473+49,0c697a+49,0a6a7a+49,0b6877+50,116776+52,106673+53,136674+53,255e69+62,285d65+63,2b5d66+63,2f5a61+65,325a62+65,3a575b+69,3b565d+69,3a565a+69,41545a+71,405357+71,4c5053+75,4b4f50+75,4e4f51+75,4e4e4e+76,524e4d+77,504e4f+77,534d4d+77,5c4a48+80,783f38+91,863a2d+99,87392f+100,80362b+100 */
+  /*background: #83362c; /!* Old browsers *!/*/
+  /*background: -moz-linear-gradient(top,  #83362c 0%, #89392e 0%, #87392c 0%, #843a31 3%, #833b2f 4%, #6e433d 13%, #6b423e 14%, #594b4a 21%, #564b49 21%, #524e4f 23%, #4e4e4e 24%, #4f4f51 24%, #475153 26%, #475256 27%, #435255 28%, #445358 28%, #415357 28%, #40555a 29%, #3a565a 31%, #3a575d 31%, #38575c 32%, #37585f 32%, #345961 33%, #2e5b61 35%, #2f5b64 35%, #2b5c63 36%, #2b5d66 37%, #285d65 37%, #265f6a 38%, #1e606c 41%, #1d636f 41%, #156471 45%, #136573 45%, #0e6775 47%, #0d6978 48%, #0b6877 49%, #0b6273 49%, #086473 49%, #0c697a 49%, #0a6a7a 49%, #0b6877 50%, #116776 52%, #106673 53%, #136674 53%, #255e69 62%, #285d65 63%, #2b5d66 63%, #2f5a61 65%, #325a62 65%, #3a575b 69%, #3b565d 69%, #3a565a 69%, #41545a 71%, #405357 71%, #4c5053 75%, #4b4f50 75%, #4e4f51 75%, #4e4e4e 76%, #524e4d 77%, #504e4f 77%, #534d4d 77%, #5c4a48 80%, #783f38 91%, #863a2d 99%, #87392f 100%, #80362b 100%); /!* FF3.6-15 *!/*/
+  /*background: -webkit-linear-gradient(top,  #83362c 0%,#89392e 0%,#87392c 0%,#843a31 3%,#833b2f 4%,#6e433d 13%,#6b423e 14%,#594b4a 21%,#564b49 21%,#524e4f 23%,#4e4e4e 24%,#4f4f51 24%,#475153 26%,#475256 27%,#435255 28%,#445358 28%,#415357 28%,#40555a 29%,#3a565a 31%,#3a575d 31%,#38575c 32%,#37585f 32%,#345961 33%,#2e5b61 35%,#2f5b64 35%,#2b5c63 36%,#2b5d66 37%,#285d65 37%,#265f6a 38%,#1e606c 41%,#1d636f 41%,#156471 45%,#136573 45%,#0e6775 47%,#0d6978 48%,#0b6877 49%,#0b6273 49%,#086473 49%,#0c697a 49%,#0a6a7a 49%,#0b6877 50%,#116776 52%,#106673 53%,#136674 53%,#255e69 62%,#285d65 63%,#2b5d66 63%,#2f5a61 65%,#325a62 65%,#3a575b 69%,#3b565d 69%,#3a565a 69%,#41545a 71%,#405357 71%,#4c5053 75%,#4b4f50 75%,#4e4f51 75%,#4e4e4e 76%,#524e4d 77%,#504e4f 77%,#534d4d 77%,#5c4a48 80%,#783f38 91%,#863a2d 99%,#87392f 100%,#80362b 100%); /!* Chrome10-25,Safari5.1-6 *!/*/
+  /*background: linear-gradient(to bottom,  #83362c 0%,#89392e 0%,#87392c 0%,#843a31 3%,#833b2f 4%,#6e433d 13%,#6b423e 14%,#594b4a 21%,#564b49 21%,#524e4f 23%,#4e4e4e 24%,#4f4f51 24%,#475153 26%,#475256 27%,#435255 28%,#445358 28%,#415357 28%,#40555a 29%,#3a565a 31%,#3a575d 31%,#38575c 32%,#37585f 32%,#345961 33%,#2e5b61 35%,#2f5b64 35%,#2b5c63 36%,#2b5d66 37%,#285d65 37%,#265f6a 38%,#1e606c 41%,#1d636f 41%,#156471 45%,#136573 45%,#0e6775 47%,#0d6978 48%,#0b6877 49%,#0b6273 49%,#086473 49%,#0c697a 49%,#0a6a7a 49%,#0b6877 50%,#116776 52%,#106673 53%,#136674 53%,#255e69 62%,#285d65 63%,#2b5d66 63%,#2f5a61 65%,#325a62 65%,#3a575b 69%,#3b565d 69%,#3a565a 69%,#41545a 71%,#405357 71%,#4c5053 75%,#4b4f50 75%,#4e4f51 75%,#4e4e4e 76%,#524e4d 77%,#504e4f 77%,#534d4d 77%,#5c4a48 80%,#783f38 91%,#863a2d 99%,#87392f 100%,#80362b 100%); /!* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ *!/*/
+  /*filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#83362c', endColorstr='#80362b',GradientType=0 ); /!* IE6-9 *!/*/
+  background: #000;
 }
 .actions {
   text-align: center;
@@ -9,23 +16,26 @@ li {
 }
 
 li:before {
-  color: #0F0; /* Цвет маркера */
+  color: #00C6E7; /* Цвет маркера */
   content: "#"; /* Сам маркер */
   padding-right: 10px; /* Расстояние от маркера до текста */
 }
+
 .player1 {
+  background: #3F4448;
   background-image: url('img/player1.png');
   width: 48px;
   height: 48px;
-  border: 2px solid #0F0;
+  border: 2px solid #000;
   float: left;
 }
 
 .player2 {
+  background: #3F4448;
   background-image: url('img/player2.png');
   width: 48px;
   height: 48px;
-  border: 2px solid #0F0;
+  border: 2px solid #000;
   float: left;
 }
 
@@ -35,15 +45,15 @@ li:before {
 }
 
 .cell {
-  background-color: #000;
-  border: 2px solid #0F0;
+  background-color: #3F4448;
+  border: 2px solid #000;
   float: left;
   height: 48px;
   width: 48px;
 }
 
 .cell:hover {
-  border-color: #F00;
+  border-color: #FB6650;
 }
 
 .table {
@@ -51,13 +61,21 @@ li:before {
   text-align: left;
   width: 520px;
   margin: 0 auto;
+  border: 2px solid;
 }
 
 .name-game {
-  color: #00FF00;
   font-size: 100px;
   text-align: center;
-  margin: 20px 0 70px;
+  margin: 20px 0 120px;
+}
+
+.color-red {
+  color: #FB6650;
+}
+
+.color-blue {
+  color: #00C6E7
 }
 
 .chat-game {
@@ -67,21 +85,21 @@ li:before {
 .rules-game, .chat-game {
   display: inline-block;
   vertical-align: top;
-
 }
 
 .rules-game {
-  color: #0F0;
+  color: #00C6E7;
   width: 25%;
   margin-left: 2%;
 }
 
 .sendbutton {
+  /*background-color: #3F4448;*/
   background-color: #000;
-  border: 1px solid #0F0;
+  border: 1px solid #00C6E7;
   display: inline-block;
   cursor: pointer;
-  color: #0F0;
+  color: #00C6E7;
   font-family: Arial;
   font-size: 14px;
   padding: 2px 30px;
@@ -100,7 +118,7 @@ li:before {
 }
 
 .rules-title, .chat-title {
-  color: #0F0;
+  color: #00C6E7;
   font-size: 30px;
   margin-bottom: 8px;
 }
@@ -108,7 +126,7 @@ li:before {
 .rules-discription__text {
   font-size: 20px;
   margin: 5px 0;
-  color: #F00;
+  color: #FB6650;
 }
 
 .rules-discription {
@@ -117,6 +135,20 @@ li:before {
 }
 
 .messages {
-  color: #F00;
+  color: #FB6650;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  width: 373px;
+  height: 320px;
+  padding: 10px;
 }
+
+.nickname-bold {
+  font-weight: bold;
+}
+
+.input {
+    margin-bottom: 10px;
+}
+
 
