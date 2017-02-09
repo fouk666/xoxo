@@ -103,6 +103,7 @@ def check_draw():
     return any(0 in row for row in state_game)
 
 
+
 # обработчик события подключения пользователя
 @socketio.on('connect')
 def connect():

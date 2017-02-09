@@ -15,6 +15,7 @@ alert('Ваш ник: ' + nickname);
 // добавляем пользователя на сервер
 $(document).ready(function () {
     // если не будет сокета, добавить генерацию ID
+
     myUser.id = socket.id;
     console.log('myUser.id: ', myUser.id);
     socket.emit('addUser', myUser);
@@ -22,8 +23,8 @@ $(document).ready(function () {
 
 // убираем пользователя при закрытии им вкладки
 window.onbeforeunload = function warn(){
-    socket.send('|~  '+myUser.nickname.toString() + ' has disconnected!  ~|');
     socket.emit('removeUser', myUser.id);
+    socket.send('|~  '+myUser.nickname.toString() + ' has disconnected!  ~|');
 };
 
 function makeid() {
@@ -49,10 +50,9 @@ function move(id) {
 
 // окончание игры
 function reset(winner) {
-    socket.send(myUser.nickname.toString()+' has disconnected!');
-    alert(('*** ' + winner + ' ***'));
     socket.emit('removeUser', myUser.id);
-    location.reload();
+    disconnect();
+    alert(('*** ' + winner + ' ***'));
 }
 
 //---------------------------ЧАТ-----------------------------
@@ -66,6 +66,7 @@ function disconnect() {
     socket.send('|~  ' + '<span class="nickname-bold">' + myUser.nickname + '</span>' + ' has disconnected!  ~|');
     socket.disconnect();
     console.log('3 disc');
+    location.reload();
 }
 socket.on('message', function(msg) {
     console.log('input move msg: ', msg);
