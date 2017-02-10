@@ -29,11 +29,18 @@ def set_player2(newPl2):
 
 # инициализация массива с состоянием игрового поля
 state_game = [[0] * 10 for i in range(10)]
-
+print('len state game : ', len(state_game))
+print(state_game)
+print(state_game[5][5])
 # обнуление состояния игрового поля
 def set_state_game():
     global state_game
     state_game = [[0] * 10 for i in range(10)]
+
+def add_state_game(s):
+    global state_game
+    for i in range(s):
+        state_game.append([0]*10)
 
 # функция, разбивающая список на диагональные объекты-строки
 def diags(matrix):
@@ -62,8 +69,9 @@ def diags(matrix):
 # 2. проверка по вертикали
 # 3. проверка по диагоналям
 def check_end(player):
-
-    for i in range(10):
+    print('CHECK END. ', len(state_game))
+    print('CHECK END: ', state_game)
+    for i in range(len(state_game)-1):
         count = 0
         for j in range(10):
             if state_game[i][j] == player:
@@ -77,7 +85,7 @@ def check_end(player):
     trasp_state_game = list(zip(*state_game))
     for i in range(10):
         count = 0
-        for j in range(10):
+        for j in range(len(state_game)-1):
             if trasp_state_game[i][j] == player:
                 count+=1
             else:
@@ -98,26 +106,39 @@ def check_end(player):
 
     return False
 
-# проверка на ничью
-def check_draw():
-    return any(0 in row for row in state_game)
+# # проверка на ничью
+# def check_draw():
+#     return any(0 in row for row in state_game)
 
 
 
 # обработчик события подключения пользователя
 @socketio.on('connect')
 def connect():
-    print('User Connected')
+    print('!!!User Connected!!!')
     if len(users) >= 2:
         #добавить обработку ожидания игроком игры
         print('So many users!')
+
+# @socketio.on('disconnect')
+# def disconnect():
+#     print('!!!User Disconnected!!!')
 
 # обработчик события отключения пользователя
 @socketio.on('removeUser')
 def remove_user(userID):
     print('User Disconnected: ', userID)
-    users.remove(userID)
-    print('count users: ', len(users))
+
+    nickname = ''
+    for user in users:
+        if user['id'] == userID:
+            nickname = user['nickname']
+            users.remove(user)
+            break
+    if len(users) == 1:
+        send({'reset' : 1}, json=True,broadcast=True)
+    send('|~ ' + nickname + ' has disconnected ~|', broadcast=True)
+    print('REMOVE count users: ', len(users))
 
 # обработчик события добавления пользователя в список на сервере
 @socketio.on('addUser')
@@ -154,43 +175,49 @@ def add_user(user):
 #отправляем сообщение игрокам с ID того, кто ходит
 #изменяем текущего игрока, за кем текущий ход
 #проверяем завершения игры
+
 @socketio.on('move')
-def move(userID,cellID):
-    if len(users) < 2:
+def move(userID,cellID,n,s,middle,strings):
+    if len(users) < 2 or userID != current_userID:
         return
-    cellX = cellID // 10
-    cellY = cellID % 10
-    if userID == current_userID and state_game[cellX][cellY] == 0:
+    if n >= 0:
+        add_state_game(strings)
+        send({'n': n, 's': s, 'middle': middle}, json=True, broadcast=True)
+
+    x = cellID // 10
+    y = cellID % 10
+    print('x,y = ',x,',',y)
+    if userID == current_userID and state_game[x][y] == 0:
         print('move: ', userID)
         print('sending after move: ', str(userID)+' move '+str(cellID)+'player1: ', player1)
         print('userID == player1 -> ', str(userID) == str(player1))
         if str(userID) == str(player1):
-            state_game[cellX][cellY] = 1
-            print('state_game[',cellX,'][',cellY,'] = 1')
+            state_game[x][y] = 1
+            print('state_game[',x,'][',y,'] = 1')
             send({'role': 'player1', 'cellID': cellID}, json=True, broadcast=True)
             if check_end(1):
                 send({'winner': users[0]['nickname']}, json=True, broadcast=True)
                 print('check_end 1')
-                users.clear()
+                # users.clear()
                 set_state_game()
                 return
         else:
             if str(userID) == str(player2):
-                state_game[cellX][cellY] = 2
-                print('state_game[',cellX,'][',cellY,'] = 2')
+                state_game[x][y] = 2
+                print('state_game[',x,'][',y,'] = 2')
                 send({'role': 'player2', 'cellID': cellID}, json=True, broadcast=True)
                 if check_end(2):
                     send({'winner': users[1]['nickname']}, json=True, broadcast=True)
                     print('check_end 2')
-                    users.clear()
+                    # users.clear()
                     set_state_game()
                     return
 
-        if not check_draw():
-            send({'draw': 1}, json=True, broadcast=True)
-            users.clear()
-            set_state_game()
-            return
+        # if not check_draw():
+        #     send({'draw': 1}, json=True, broadcast=True)
+        #     # users.clear()
+        #     set_state_game()
+        #     return
 
         if current_userID == player1:
             set_current_userID(player2)
